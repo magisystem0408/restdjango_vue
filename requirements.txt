@@ -1,0 +1,14 @@
+automium==0.2.6
+automium-web==0.1.1
+click==8.0.1
+Django==2.2.24
+django-webpack-loader==0.7.0
+djangorestframework==3.11.2
+Flask==2.0.1
+itsdangerous==2.0.1
+Jinja2==3.0.1
+legacy==0.1.6
+MarkupSafe==2.0.1
+pytz==2021.1
+sqlparse==0.4.1
+Werkzeug==2.0.1
