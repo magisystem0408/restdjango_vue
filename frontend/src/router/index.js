@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Job from "@/views/Job";
+import JobEditor from "@/views/JobEditor";
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,12 @@ const routes = [
     name:'Job',
     component: Job,
     props:true
+  },
+  {
+    path: '/editor',
+    name: 'JobEditor',
+    component: JobEditor,
+    props: true,
   }
 
 ]

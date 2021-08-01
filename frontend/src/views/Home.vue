@@ -11,12 +11,21 @@
         <p>
         会社名：{{ job.company_name }}
         </p>
-
           </RouterLink>
-
         </h2>
         <p>仕事名：{{ job.job_title }}</p>
       </div>
+      <div class="my-4">
+        <p v-show="loadingJobs">ロード中</p>
+        <v-btn
+        v-show="next"
+        @click="getJobs"
+        color="success"
+        >
+        更新する
+        </v-btn>
+      </div>
+
     </v-container>
   </div>
 </template>
@@ -29,16 +38,31 @@ export default {
   name: 'Home',
   data() {
     return {
-      jobs: []
+      jobs: [],
+      next:null,
+      loadingJobs:false
     }
   },
   methods: {
     getJobs() {
       console.log("呼び出された")
       let endpoint = '/api/jobs/'
+
+      if(this.next){
+        endpoint =this.next
+      }
+      this.loadingJobs =true
+
       apiService(endpoint).then(data => {
-        console.log(data)
         this.jobs.push(...data)
+        this.loadingJobs =false;
+
+        if (data.next){
+          this.next =data.next
+        }else {
+          this.next =null
+        }
+
       }).catch(e => {
         console.log(e)
       })
